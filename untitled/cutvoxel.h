@@ -8,6 +8,7 @@ class CutVoxel : public FiguraGeometrica{
 
         int x, y, z;
 
+        float r, g, b, a;
     public:
 
         CutVoxel(int _x, int _y, int _z);

@@ -8,6 +8,7 @@ class CutEllipsoid : public FiguraGeometrica{
 
         int xcenter, ycenter, zcenter, rx, ry, rz;
 
+        float r, g, b, a;
     public:
 
         CutEllipsoid(int _xcenter, int _ycenter, int _zcenter, int _rx, int _ry, int _rz);

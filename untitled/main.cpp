@@ -38,7 +38,7 @@ int main(){
 
 
     //Arquivo txt
-    fin.open("C:/Users/yanta/ECT-UFRN_parte2/escultura_parte2/figuras.txt");
+    fin.open("/Users/cristian/Desktop/figuras.txt");
 
     if(!fin.is_open()){
 
@@ -55,76 +55,76 @@ int main(){
 
     Sculptor t(nx, ny, nz);
 
-        while(getline(fin, s)){
-            st.clear();
-            st.str(s);
-            st >> s;
+    while(getline(fin, s)){
+        st.clear();
+        st.str(s);
+        st >> s;
 
-            if(s.compare("putvoxel")==0){
-                int x, y, z;
-                float r, g, b, a;
+        if(s.compare("putvoxel")==0){
+            int x, y, z;
+            float r, g, b, a;
 
-                st >> x >> y >> z >> r >> g >> b >> a;
-                cout << x << y << z << r << g << b << a;
-                figura.push_back(new PutVoxel(x, y, z, r, g, b, a));
-            }
-
-            if(s.compare("cutvoxel")==0){
-
-                int x, y, z;
-                float r, g, b, a;
-
-                st >> x >> y >> z >> r >> g >> b >> a;
-                cout << x << y << z << r << g << b << a;
-                figura.push_back(new CutVoxel(x, y, z, r, g, b, a));
-            }
-
-            if(s.compare("putbox")==0){
-                int x0, x1, y0, y1, z0, z1;
-
-                float r, g, b, a;
-
-                st >> x0 >> x1 >> y0 >> y1 >> z0 >> z1 >> r >> g >> b >> a;
-                figura.push_back(new PutBox(x0, x1, y0, y1, z0, z1, r, g, b, a));
-            }
-
-            if(s.compare("cutbox")==0){
-                int x0, x1, y0, y1, z0, z1;
-                float r, g, b, a;
-
-                st >> x0 >> x1 >> y0 >> y1 >> z0 >> z1 >> r >> g >> b >> a;
-                figura.push_back(new CutBox(x0, x1, y0, y1, z0, z1, r, g, b, a));
-            }
-
-            if(s.compare("putsphere")==0){
-                int xcenter, ycenter, zcenter, radius;
-                float r, g, b, a;
-
-                st >> xcenter >> ycenter >> zcenter >> radius >> r >> g >> b >> a;
-                figura.push_back(new PutSphere(xcenter, ycenter, zcenter, radius, r, g, b, a));
-            }
-
-            if(s.compare("cutsphere")==0){
-                int xcenter, ycenter, zcenter, radius;
-                float r, g, b, a;
-                st >> xcenter >> ycenter >> zcenter >> radius >> r >> g >> b >> a;
-                figura.push_back(new CutSphere(xcenter, ycenter, zcenter, radius, r, g, b, a));
-            }
-
-            if(s.compare("putellipsoid")==0){
-                int xcenter, ycenter, zcenter, rx, ry, rz;
-                float r, g, b, a;
-                st >> xcenter >> ycenter >> zcenter >> rx >> ry >> rz >> r >> g >> b >> a;
-                figura.push_back(new PutEllipsoid(xcenter, ycenter, zcenter, rx, ry, rz, r, g, b, a));
-            }
-
-            if(s.compare("cutellipsoid")==0){
-                int xcenter, ycenter, zcenter, rx, ry, rz;
-                float r, g, b, a;
-                st >> xcenter >> ycenter >> zcenter >> rx >> ry >> rz >> r >> g >> b >> a;
-                figura.push_back(new CutEllipsoid(xcenter, ycenter, zcenter, rx, ry, rz, r, g, b, a));
-            }
+            st >> x >> y >> z >> r >> g >> b >> a;
+            cout << x << y << z << r << g << b << a;
+            figura.push_back(new PutVoxel(x, y, z, r, g, b, a));
         }
+
+        if(s.compare("cutvoxel")==0){
+
+            int x, y, z;
+            float r, g, b, a;
+
+            st >> x >> y >> z >> r >> g >> b >> a;
+            cout << x << y << z << r << g << b << a;
+            figura.push_back(new CutVoxel(x, y, z));
+        }
+
+        if(s.compare("putbox")==0){
+            int x0, x1, y0, y1, z0, z1;
+
+            float r, g, b, a;
+
+            st >> x0 >> x1 >> y0 >> y1 >> z0 >> z1 >> r >> g >> b >> a;
+            figura.push_back(new PutBox(x0, x1, y0, y1, z0, z1, r, g, b, a));
+        }
+
+        if(s.compare("cutbox")==0){
+            int x0, x1, y0, y1, z0, z1;
+            float r, g, b, a;
+
+            st >> x0 >> x1 >> y0 >> y1 >> z0 >> z1 >> r >> g >> b >> a;
+            figura.push_back(new CutBox(x0, x1, y0, y1, z0, z1));
+        }
+
+        if(s.compare("putsphere")==0){
+            int xcenter, ycenter, zcenter, radius;
+            float r, g, b, a;
+
+            st >> xcenter >> ycenter >> zcenter >> radius >> r >> g >> b >> a;
+            figura.push_back(new PutSphere(xcenter, ycenter, zcenter, radius, r, g, b, a));
+        }
+
+        if(s.compare("cutsphere")==0){
+            int xcenter, ycenter, zcenter, radius;
+            float r, g, b, a;
+            st >> xcenter >> ycenter >> zcenter >> radius >> r >> g >> b >> a;
+            figura.push_back(new CutSphere(xcenter, ycenter, zcenter, radius));
+        }
+
+        if(s.compare("putellipsoid")==0){
+            int xcenter, ycenter, zcenter, rx, ry, rz;
+            float r, g, b, a;
+            st >> xcenter >> ycenter >> zcenter >> rx >> ry >> rz >> r >> g >> b >> a;
+            figura.push_back(new PutEllipsoid(xcenter, ycenter, zcenter, rx, ry, rz, r, g, b, a));
+        }
+
+        if(s.compare("cutellipsoid")==0){
+            int xcenter, ycenter, zcenter, rx, ry, rz;
+            float r, g, b, a;
+            st >> xcenter >> ycenter >> zcenter >> rx >> ry >> rz >> r >> g >> b >> a;
+            figura.push_back(new CutEllipsoid(xcenter, ycenter, zcenter, rx, ry, rz));
+        }
+    }
 
     fin.close();
 
@@ -136,7 +136,7 @@ int main(){
 
 
     //Arquivo OFF
-    t.writeOFF((char*)"C:/Users/yanta/ECT-UFRN_parte2/escultura_parte2/figuras.off");
+    t.writeOFF((char*)"/Users/cristian/Desktop/figuras.off");
 
 
 
