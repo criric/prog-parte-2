@@ -15,14 +15,14 @@ CutEllipsoid::~CutEllipsoid(){}
 
 void CutEllipsoid::draw(Sculptor &t){
     float elipsoid;
-       for(int i = xcenter - rx; i < xcenter + rx; i++){
-           for(int j = ycenter - ry; j < ycenter + ry; j++){
-               for(int k = zcenter - rz; k < zcenter + rz; k++){
-                   elipsoid = pow(i - xcenter, 2)/pow(rx,2) + pow(j - ycenter, 2)/pow(ry,2) + pow(k - zcenter,2)/pow(rz,2);
-                   if(elipsoid < 1){
-                       t.cutVoxel(i,j,k);
-                   }
-               }
-           }
-       }
+    for(int i = xcenter - rx; i < xcenter + rx; i++){
+        for(int j = ycenter - ry; j < ycenter + ry; j++){
+            for(int k = zcenter - rz; k < zcenter + rz; k++){
+                elipsoid = pow(i - xcenter, 2)/pow(rx,2) + pow(j - ycenter, 2)/pow(ry,2) + pow(k - zcenter,2)/pow(rz,2);
+                if(elipsoid < 1){
+                    t.cutVoxel(i,j,k);
+                }
+            }
+        }
+    }
 }

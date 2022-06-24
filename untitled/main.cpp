@@ -5,35 +5,24 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-
 #include "sculptor.h"
-
 #include "figurageometrica.h"
-
 #include "putvoxel.h"
 #include "cutvoxel.h"
-
 #include "cutsphere.h"
-
 #include "putellipsoid.h"
 #include "cutellipsoid.h"
-
 #include "putbox.h"
 #include "cutbox.h"
-
 #include "putsphere.h"
 
 using namespace std;
 
 int main(){
     int nx, ny, nz;
-
     string s;
-
     ifstream fin;
-
     stringstream st;
-
     vector <FiguraGeometrica*> figura;
 
 
@@ -41,15 +30,12 @@ int main(){
     fin.open("/Users/cristian/Desktop/figuras.txt");
 
     if(!fin.is_open()){
-
         exit(0);
-
     }
 
     getline(fin, s);
     st.clear();
     st.str(s);
-
     st>>s;
     st>>nx>>ny>>nz;
 
@@ -63,17 +49,14 @@ int main(){
         if(s.compare("putvoxel")==0){
             int x, y, z;
             float r, g, b, a;
-
             st >> x >> y >> z >> r >> g >> b >> a;
             cout << x << y << z << r << g << b << a;
             figura.push_back(new PutVoxel(x, y, z, r, g, b, a));
         }
 
         if(s.compare("cutvoxel")==0){
-
             int x, y, z;
             float r, g, b, a;
-
             st >> x >> y >> z >> r >> g >> b >> a;
             cout << x << y << z << r << g << b << a;
             figura.push_back(new CutVoxel(x, y, z));
@@ -81,9 +64,7 @@ int main(){
 
         if(s.compare("putbox")==0){
             int x0, x1, y0, y1, z0, z1;
-
             float r, g, b, a;
-
             st >> x0 >> x1 >> y0 >> y1 >> z0 >> z1 >> r >> g >> b >> a;
             figura.push_back(new PutBox(x0, x1, y0, y1, z0, z1, r, g, b, a));
         }
@@ -91,7 +72,6 @@ int main(){
         if(s.compare("cutbox")==0){
             int x0, x1, y0, y1, z0, z1;
             float r, g, b, a;
-
             st >> x0 >> x1 >> y0 >> y1 >> z0 >> z1 >> r >> g >> b >> a;
             figura.push_back(new CutBox(x0, x1, y0, y1, z0, z1));
         }
@@ -99,7 +79,6 @@ int main(){
         if(s.compare("putsphere")==0){
             int xcenter, ycenter, zcenter, radius;
             float r, g, b, a;
-
             st >> xcenter >> ycenter >> zcenter >> radius >> r >> g >> b >> a;
             figura.push_back(new PutSphere(xcenter, ycenter, zcenter, radius, r, g, b, a));
         }
@@ -129,13 +108,10 @@ int main(){
     fin.close();
 
     for(int i=0; i< int(figura.size()); i++){
-
         figura[i]->draw(t);
-
     }
 
 
-    //Arquivo OFF
     t.writeOFF((char*)"/Users/cristian/Desktop/figuras.off");
 
 
